@@ -508,8 +508,8 @@ static NSMutableArray *registeredApps = nil;
         
         return;
     }
-    
-    NSString *applicationPath = [NSString stringWithFormat:@"15985?t=p&u=%@&tr=crossfade",
+
+    NSString *applicationPath = [NSString stringWithFormat:@"15985?t=p&u=%@&h=%%20&k=%%20",
                                  [ConnectUtil urlEncode:imageURL.absoluteString] // content path
                                  ];
     
@@ -585,24 +585,12 @@ static NSMutableArray *registeredApps = nil;
     BOOL isVideo = [[mimeType substringToIndex:1] isEqualToString:@"v"];
     
     NSString *applicationPath;
-    
-    if (isVideo)
-    {
-        applicationPath = [NSString stringWithFormat:@"15985?t=v&u=%@&k=(null)&videoName=%@&videoFormat=%@",
-                           [ConnectUtil urlEncode:mediaURL.absoluteString], // content path
-                           title ? [ConnectUtil urlEncode:title] : @"(null)", // video name
-                           ensureString(mediaType) // video format
-                           ];
-    } else
-    {
-        applicationPath = [NSString stringWithFormat:@"15985?t=a&u=%@&k=(null)&songname=%@&artistname=%@&songformat=%@&albumarturl=%@",
-                           [ConnectUtil urlEncode:mediaURL.absoluteString], // content path
-                           title ? [ConnectUtil urlEncode:title] : @"(null)", // song name
-                           description ? [ConnectUtil urlEncode:description] : @"(null)", // artist name
-                           ensureString(mediaType), // audio format
-                           iconURL ? [ConnectUtil urlEncode:iconURL.absoluteString] : @"(null)"
-                           ];
-    }
+
+    applicationPath = [NSString stringWithFormat:@"15985?t=v&u=%@&h=%%20&k=%%20",
+                                                 [ConnectUtil urlEncode:mediaURL.absoluteString], // content path
+                                                 title ? [ConnectUtil urlEncode:title] : @"(null)", // video name
+                                                 ensureString(mediaType) // video format
+    ];
     
     NSString *commandPath = [NSString pathWithComponents:@[
                                                            self.serviceDescription.commandURL.absoluteString,
