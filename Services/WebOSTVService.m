@@ -829,41 +829,45 @@
         ImageInfo *imageInfo = [mediaInfo.images firstObject];
         iconURL = imageInfo.url;
     }
-    if ([self.serviceDescription.version isEqualToString:@"4.0.0"]) {
-        if (self.dlnaService) {
-            id <MediaPlayer> mediaPlayer;
+//    if ([self.serviceDescription.version isEqualToString:@"4.0.0"])
+//    {
+    if (self.dlnaService) {
+        id <MediaPlayer> mediaPlayer;
 
-            if ([self.dlnaService respondsToSelector:@selector(mediaPlayer)])
-                mediaPlayer = [self.dlnaService performSelector:@selector(mediaPlayer)];
+        if ([self.dlnaService respondsToSelector:@selector(mediaPlayer)])
+            mediaPlayer = [self.dlnaService performSelector:@selector(mediaPlayer)];
 
-            if (mediaPlayer &&
-                [mediaPlayer respondsToSelector:@selector(playMedia:iconURL:title:description:mimeType:shouldLoop:success:failure:)]) {
-                [mediaPlayer displayImageWithMediaInfo:mediaInfo success:success failure:failure];
-                return;
-            }
+        if (mediaPlayer &&
+            [mediaPlayer respondsToSelector:@selector(playMedia:iconURL:title:description:mimeType:shouldLoop:success:failure:)]) {
+            [mediaPlayer displayImageWithMediaInfo:mediaInfo success:success failure:failure];
+            return;
         }
-
-        NSDictionary *params = @{
-                @"target": ensureString(mediaInfo.url.absoluteString),
-                @"iconSrc": ensureString(iconURL.absoluteString),
-                @"title": ensureString(mediaInfo.title),
-                @"description": ensureString(mediaInfo.description),
-                @"mimeType": ensureString(mediaInfo.mimeType)
-        };
-
-        [self displayMediaWithParams:params success:success failure:failure];
-    } else {
-        NSString * webAppId = @"MediaPlayer";
-
-        WebAppLaunchSuccessBlock connectSuccess = ^(WebAppSession *webAppSession) {
-            WebOSWebAppSession *session = (WebOSWebAppSession *) webAppSession;
-            [session.mediaPlayer displayImageWithMediaInfo:mediaInfo success:success failure:failure];
-        };
-
-        [self joinWebAppWithId:webAppId success:connectSuccess failure:^(NSError *error) {
-            [self launchWebApp:webAppId success:connectSuccess failure:failure];
-        }];
     }
+
+    NSDictionary *params = @{
+            @"target": ensureString(mediaInfo.url.absoluteString),
+            @"iconSrc": ensureString(iconURL.absoluteString),
+            @"title": ensureString(mediaInfo.title),
+            @"description": ensureString(mediaInfo.description),
+            @"mimeType": ensureString(mediaInfo.mimeType)
+    };
+
+    [self displayMediaWithParams:params success:success failure:failure];
+//    } else
+//    {
+//        NSString *webAppId = @"MediaPlayer";
+//
+//        WebAppLaunchSuccessBlock connectSuccess = ^(WebAppSession *webAppSession)
+//        {
+//            WebOSWebAppSession *session = (WebOSWebAppSession *)webAppSession;
+//            [session.mediaPlayer displayImageWithMediaInfo:mediaInfo success:success failure:failure];
+//        };
+//
+//        [self joinWebAppWithId:webAppId success:connectSuccess failure:^(NSError *error)
+//         {
+//             [self launchWebApp:webAppId success:connectSuccess failure:failure];
+//         }];
+//    }
 }
 
 - (void)playMedia:(NSURL *)mediaURL iconURL:(NSURL *)iconURL title:(NSString *)title description:(NSString *)description mimeType:(NSString *)mimeType shouldLoop:(BOOL)shouldLoop success:(MediaPlayerDisplaySuccessBlock)success failure:(FailureBlock)failure {
