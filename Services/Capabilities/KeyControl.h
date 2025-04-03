@@ -45,17 +45,62 @@
 
 @protocol KeyControl <NSObject>
 
-- (id<KeyControl>) keyControl;
-- (CapabilityPriorityLevel) keyControlPriority;
+- (id <KeyControl>)keyControl;
 
-- (void) upWithSuccess:(SuccessBlock)success failure:(FailureBlock)failure;
-- (void) downWithSuccess:(SuccessBlock)success failure:(FailureBlock)failure;
-- (void) leftWithSuccess:(SuccessBlock)success failure:(FailureBlock)failure;
-- (void) rightWithSuccess:(SuccessBlock)success failure:(FailureBlock)failure;
-- (void) okWithSuccess:(SuccessBlock)success failure:(FailureBlock)failure;
-- (void) backWithSuccess:(SuccessBlock)success failure:(FailureBlock)failure;
-- (void) homeWithSuccess:(SuccessBlock)success failure:(FailureBlock)failure;
+- (CapabilityPriorityLevel)keyControlPriority;
 
-- (void) sendKeyCode:(NSUInteger)keyCode success:(SuccessBlock)success failure:(FailureBlock)failure;
+- (void)upWithSuccess:(SuccessBlock)success failure:(FailureBlock)failure;
+
+- (void)downWithSuccess:(SuccessBlock)success failure:(FailureBlock)failure;
+
+- (void)leftWithSuccess:(SuccessBlock)success failure:(FailureBlock)failure;
+
+- (void)rightWithSuccess:(SuccessBlock)success failure:(FailureBlock)failure;
+
+- (void)okWithSuccess:(SuccessBlock)success failure:(FailureBlock)failure;
+
+- (void)backWithSuccess:(SuccessBlock)success failure:(FailureBlock)failure;
+
+- (void)homeWithSuccess:(SuccessBlock)success failure:(FailureBlock)failure;
+
+- (void)num0WithSuccess:(SuccessBlock)success failure:(FailureBlock)failure;
+
+- (void)num1WithSuccess:(SuccessBlock)success failure:(FailureBlock)failure;
+
+- (void)num2WithSuccess:(SuccessBlock)success failure:(FailureBlock)failure;
+
+- (void)num3WithSuccess:(SuccessBlock)success failure:(FailureBlock)failure;
+
+- (void)num4WithSuccess:(SuccessBlock)success failure:(FailureBlock)failure;
+
+- (void)num5WithSuccess:(SuccessBlock)success failure:(FailureBlock)failure;
+
+- (void)num6WithSuccess:(SuccessBlock)success failure:(FailureBlock)failure;
+
+- (void)num7WithSuccess:(SuccessBlock)success failure:(FailureBlock)failure;
+
+- (void)num8WithSuccess:(SuccessBlock)success failure:(FailureBlock)failure;
+
+- (void)num9WithSuccess:(SuccessBlock)success failure:(FailureBlock)failure;
+
+- (void)numRedWithSuccess:(SuccessBlock)success failure:(FailureBlock)failure;
+
+- (void)numGreenWithSuccess:(SuccessBlock)success failure:(FailureBlock)failure;
+
+- (void)numYellowWithSuccess:(SuccessBlock)success failure:(FailureBlock)failure;
+
+- (void)numBlueWithSuccess:(SuccessBlock)success failure:(FailureBlock)failure;
+
+- (void)numGuideWithSuccess:(SuccessBlock)success failure:(FailureBlock)failure;
+
+- (void)dashWithSuccess:(SuccessBlock)success failure:(FailureBlock)failure;
+
+- (void)infoWithSuccess:(SuccessBlock)success failure:(FailureBlock)failure;
+
+- (void)menuWithSuccess:(SuccessBlock)success failure:(FailureBlock)failure;
+
+- (void)exitWithSuccess:(SuccessBlock)success failure:(FailureBlock)failure;
+
+- (void)sendKeyCode:(NSUInteger)keyCode success:(SuccessBlock)success failure:(FailureBlock)failure;
 
 @end
