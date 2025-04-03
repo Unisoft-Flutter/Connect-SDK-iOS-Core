@@ -101,6 +101,9 @@
 
 - (void)exitWithSuccess:(SuccessBlock)success failure:(FailureBlock)failure;
 
+- (void)replayWithSuccess:(SuccessBlock)success failure:(FailureBlock)failure;
+
+
 - (void)sendKeyCode:(NSUInteger)keyCode success:(SuccessBlock)success failure:(FailureBlock)failure;
 
 @end
