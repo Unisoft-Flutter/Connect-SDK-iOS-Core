@@ -742,6 +742,14 @@ static NSMutableArray *registeredApps = nil;
     [self sendKeyCode:RokuKeyCodeSelect success:success failure:failure];
 }
 
+- (void)infoWithSuccess:(SuccessBlock)success failure:(FailureBlock)failure{
+    [self sendKeyCode:RokuKeyCodeInfo success:success failure:failure];
+}
+
+- (void)replayWithSuccess:(SuccessBlock)success failure:(FailureBlock)failure{
+    [self sendKeyCode:RokuKeyCodeInstantReplay success:success failure:failure];
+}
+
 - (void)sendKeyCode:(RokuKeyCode)keyCode success:(SuccessBlock)success failure:(FailureBlock)failure
 {
     if (keyCode > kRokuKeyCodes.count)
