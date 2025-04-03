@@ -894,7 +894,6 @@
 
 - (void)playMediaWithMediaInfo:(MediaInfo *)mediaInfo shouldLoop:(BOOL)shouldLoop success:(MediaPlayerSuccessBlock)success failure:(FailureBlock)failure {
     NSURL *iconURL;
-    NSURL *iconURL;
     if (mediaInfo.images) {
         ImageInfo *imageInfo = [mediaInfo.images firstObject];
         iconURL = imageInfo.url;
